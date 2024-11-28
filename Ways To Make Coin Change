@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+
+long rec(int *a,int i,int val,int n,vector<vector<long>> &v){
+    if(i==n || val<0)return 0;
+    if(val==0) return 1;
+    if(v[i][val]!=-1) return v[i][val];
+    v[i][val] = rec(a,i,val-a[i],n,v)+rec(a,i+1,val,n,v);
+    return v[i][val];
+}
+
+long countWaysToMakeChange(int *a, int n, int val)
+{
+    //Write your code here
+    vector<vector<long>> v(n+1,vector<long>(val+1,-1));
+    return rec(a,0,val,n,v);
+}
