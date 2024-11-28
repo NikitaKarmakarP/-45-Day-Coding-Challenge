@@ -1,0 +1,48 @@
+#include <bits/stdc++.h> 
+
+int power(int a , int b, int m){
+
+    if(m == 1){ // cause answer within mod 1 is obv 0
+
+        return 0;
+
+    }
+
+    int res = 1;
+
+    //modular arithmetic (a^b) mod m = (a mod m)^b
+
+    // so to make sure a lies within range of m.. do mod of a beforehand
+
+    a = a % m;
+
+    while(b>0){
+
+        if((b&1) != 0){
+
+            res = (res * a) % m;
+
+        }
+
+        a = (a %m *a % m) % m;
+
+        b = b >> 1;
+
+    }
+
+    return res;
+
+}
+
+int powerOfPower(int A, int B, int C, int M) 
+
+{
+
+    int temp = power(B,C,M-1); //m-1 cause eulers theorem
+
+    int ans = power(A, temp,M);
+
+    return ans;
+
+}
+
