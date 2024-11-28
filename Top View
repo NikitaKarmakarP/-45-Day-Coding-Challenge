@@ -1,0 +1,96 @@
+import java.util.*;
+
+ 
+
+public class Solution 
+
+{
+
+    public static void printTopView(BinaryTreeNode<Integer> root) {
+
+        Queue<Tree> queue = new LinkedList<>();
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+
+        if(root != null) {
+
+            int x = 0;
+
+            int y = 0;
+
+            queue.offer(new Tree(x, y, root));
+
+        }
+
+ 
+
+        while(queue.size() != 0) {
+
+            Tree tree = queue.poll();
+
+            if(tree.node.left != null) {
+
+                int updatedX = tree.x + 1;
+
+                int updatedY = tree.y - 1;
+
+                queue.offer(new Tree(updatedX, updatedY, tree.node.left));
+
+            }
+
+            if(tree.node.right != null) {
+
+                int updatedX = tree.x + 1;
+
+                int updatedY = tree.y + 1;
+
+                queue.offer(new Tree(updatedX, updatedY, tree.node.right));
+
+            }
+
+ 
+
+            if(!map.containsKey(tree.y)) {
+
+                map.put(tree.y, tree.node.data);
+
+            }
+
+        }
+
+        for(Map.Entry<Integer, Integer> m : map.entrySet()) {
+
+            System.out.print(m.getValue());
+
+            System.out.print("\t");
+
+        }
+
+ 
+
+    }
+
+}
+
+ 
+
+class Tree {
+
+    int x;
+
+    int y;
+
+    BinaryTreeNode<Integer> node;
+
+    public Tree(int x, int y, BinaryTreeNode<Integer> node) {
+
+        this.x = x;
+
+        this.y = y;
+
+        this.node = node;
+
+    }
+
+}
+
