@@ -1,0 +1,33 @@
+BinaryTreeNode<int>* deletenode(BinaryTreeNode<int>*root,int data)
+
+{
+
+    if(!root){return root;}
+
+    root->left = deletenode(root->left,data);
+
+    root->right = deletenode(root->right,data);
+
+    if(root->data==data && root->left==NULL && root->right==NULL)
+
+    {
+
+        return NULL;
+
+    }
+
+    return root;
+
+}
+
+BinaryTreeNode<int>* deleteLeafNodes(BinaryTreeNode<int> *root, int x)
+
+{
+
+    //Write your code here
+
+    BinaryTreeNode<int>*ans = deletenode(root,x);
+
+    return ans;
+
+}
