@@ -1,0 +1,61 @@
+
+string dayOfTheWeek(int day, int month, int year) 
+{
+    /*Zeller's Congruence is used to determine the day
+
+     of the week for any given date in the Gregorian or 
+
+     Julian calendar. The formula for the Gregorian calendar is:
+
+     (day + 13 * (month + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7;  
+
+    k=year%100
+    j=year/100;
+    0->sat 1->sunday 2->monday ....6->fri
+
+    march=3 ,april=4,...jan=13,feb=14
+    if month<3
+    month+=12 
+    year--
+    */
+    // code
+
+    if(month < 3){
+
+        month += 12;
+
+        year--;
+
+    }
+
+    int k = year % 100;
+
+    int j = year / 100;
+
+    int daysOfWeek = (day + 13 * (month + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7;
+
+    
+    switch (daysOfWeek) {
+    case 0:
+        return  "Saturday ";
+        break;
+    case 1:
+        return "Sunday ";
+        break;
+    case 2:
+        return "Monday ";
+        break;
+    case 3:
+        return "Tuesday ";
+        break;
+    case 4:
+        return "Wednesday ";
+        break;
+    case 5:
+        return "Thursday ";
+        break;
+    case 6:
+        return "Friday ";
+        break;
+    }
+}
