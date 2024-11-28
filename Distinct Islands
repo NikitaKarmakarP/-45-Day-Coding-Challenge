@@ -1,0 +1,106 @@
+#include<bits/stdc++.h>
+
+void bfs(int row,int col, vector<pair<int,int>> &vec,  vector<vector<bool>> &visited,int row0,int col0,int** arr,int n,int m){
+
+    visited[row][col]=1;
+
+ 
+
+    queue<pair<int,int>> q;
+
+    vec.push_back({0,0});
+
+ 
+
+    q.push({row,col});
+
+    int delx[4]={-1,0,1,0};
+
+    int dely[4]={0,1,0,-1};
+
+    while(!q.empty()){
+
+        int row=q.front().first;
+
+        int col=q.front().second;
+
+        q.pop();
+
+ 
+
+        for(int i=0;i<4;i++){
+
+            int nrow=row+delx[i];
+
+            int ncol=col+dely[i];
+
+            if(nrow>=0 && ncol>=0 && nrow<n && ncol<m && !visited[nrow][ncol] && arr[nrow][ncol]==1){
+
+                q.push({nrow,ncol});
+
+                visited[nrow][ncol]=true;
+
+                  vec.push_back({
+
+                    nrow-row0,
+
+                    ncol-col0
+
+                 });
+
+ 
+
+             }
+
+        }
+
+    }
+
+ 
+
+}
+
+ 
+
+int distinctIslands(int** arr, int n, int m)
+
+{
+
+    //Write your code here
+
+    if (n == 0 && m == 0) {
+
+        return 0;
+
+    }
+
+    vector<vector<bool>> visited(n,vector<bool>(m,false));
+
+    set<vector<pair<int,int>>> st;
+
+    for(int i=0;i<n;i++){
+
+            for(int j=0;j<m;j++){
+
+                if(!visited[i][j]&& arr[i][j]==1){
+
+                    vector<pair<int,int>> vec;
+
+                    bfs(i,j,vec,visited,i,j,arr,n,m);
+
+                    st.insert(vec);
+
+                }
+
+            }
+
+    }
+
+ 
+
+    return st.size();
+
+    
+
+}
+
