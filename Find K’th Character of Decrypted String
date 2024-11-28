@@ -1,0 +1,43 @@
+import java.math.BigInteger;
+public class Solution 
+{
+    public static char kThCharaterOfDecryptedString(String s, Long k) 
+    {
+        // Write your code here
+       
+        BigInteger count = BigInteger.ZERO;
+        BigInteger prev = BigInteger.ZERO;
+        StringBuilder str = new StringBuilder();
+
+        for (int i = 0; i < s.length();) {
+            char ch = s.charAt(i);
+
+            if (Character.isLetter(ch)) {
+                str.append(ch);
+                i++;
+            } else {
+                int start = i;
+
+                while (i < s.length() && !Character.isLetter(s.charAt(i))) {
+                    i++;
+                }
+
+                BigInteger value = new BigInteger(s.substring(start, i));
+                prev = count;
+                count = count.add(BigInteger.valueOf(str.length()).multiply(value));
+
+                if (prev.compareTo(BigInteger.valueOf(k)) < 0 && BigInteger.valueOf(k).compareTo(count) <= 0) {
+                    int index = BigInteger.valueOf(k).subtract(prev)
+                    .subtract(BigInteger.ONE)
+                    .mod(BigInteger.valueOf(str.length())).intValue();
+                    String res = str.toString();
+                    return res.charAt(index);
+                }
+
+                str = new StringBuilder();
+            }
+        }
+
+        return 'a';
+    }
+}
