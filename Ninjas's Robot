@@ -1,0 +1,35 @@
+#include <cmath>
+#include <algorithm>
+
+int findShortestLenHelper(int t, vector<int> &dp){
+   //  If state is already computed.
+   if (dp[t] > 0)
+   {
+       return dp[t];
+   }
+
+   //  Number of bits.
+   int n = floor(log2(t)) + 1;
+
+   if (1 << n == t + 1)
+   {
+       //  Base case.
+       dp[t] = n;
+   }
+   else
+   {
+       dp[t] = findShortestLenHelper((1 << n) - 1 - t, dp) + n + 1;
+       for (int i = 0; i < n - 1; i++)
+       {
+           dp[t] = min(dp[t], findShortestLenHelper(t - (1 << (n - 1)) + (1 << i), dp) + n + i + 1);
+       }
+   }
+   return dp[t];
+}
+
+int findShortestLen(int target){
+   vector<int> dp(2 * target);
+
+   //  Recursively find answer.
+   return findShortestLenHelper(target, dp);
+}
