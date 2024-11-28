@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+ 
+
+bool valid(int row, int col, int n, int m) {
+
+    return row >= 0 && col >= 0 && row < n && col < m;
+
+}
+
+ 
+
+void solve(string grid[], int n, int m, string word, vector<vector<int>>& vis, 
+
+int& ans, int word_index, int curr_i, int curr_j) {
+
+    if (word_index == word.size() - 1) {
+
+        ans++;
+
+        return;
+
+    }
+
+ 
+
+    vis[curr_i][curr_j] = 1;
+
+    int next_i[] = {0, 0, 1, -1, 1, -1, -1, 1};
+
+    int next_j[] = {1, -1, 0, 0, 1, -1, 1, -1};
+
+ 
+
+    for (int i = 0; i < 8; i++) {  // Fix range to 8 for 8 possible directions
+
+        int new_i = curr_i + next_i[i];
+
+        int new_j = curr_j + next_j[i];
+
+ 
+
+        if (valid(new_i, new_j, n, m) && vis[new_i][new_j] == 0 && 
+
+            grid[new_i][new_j] == word[word_index + 1]) {
+
+            solve(grid, n, m, word, vis, ans, word_index + 1, new_i, new_j);
+
+        }
+
+    }
+
+    vis[curr_i][curr_j] = 0;
+
+}
+
+ 
+
+int wordSearch(string grid[], int n, int m, string word) {
+
+    vector<vector<int>> vis(n, vector<int>(m, 0));
+
+    int ans = 0;
+
+ 
+
+    for (int i = 0; i < n; i++) {
+
+        for (int j = 0; j < m; j++) {
+
+            if (grid[i][j] == word[0]) {
+
+                solve(grid, n, m, word, vis, ans, 0, i, j);
+
+            }
+
+        }
+
+    }
+
+    return ans;
+
+}
