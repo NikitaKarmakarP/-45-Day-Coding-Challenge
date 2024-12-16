@@ -1,0 +1,43 @@
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+ 
+
+vector<int> missingNumbers(vector<int> &arr, int n) {
+
+    vector<int> result;
+
+    sort(arr.begin(), arr.end());
+
+    
+
+    int index = 0;
+
+    int smallest = arr[0];
+
+    int largest = arr[n-1];
+
+    
+
+    for(int i = smallest; i <= largest; i++) {
+
+        while(index < n && arr[index] < i) {
+
+            index++;
+
+        }
+
+        if(arr[index] != i) {
+
+            result.push_back(i);
+
+        }
+
+    }
+
+    
+
+    return result;
+
+}
