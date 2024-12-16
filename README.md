@@ -95,8 +95,9 @@ cd 45-Day-Coding-Challenge
 2) Pick a Problem
 Explore the folders or files to find a challenge that interests you.
 
-3) Run & Test
-Use the appropriate language tools (e.g., Python, Java, C++) to execute the code and validate it with test cases.
+3) Run the Code: Each solution is written in a specific programming language, such as Python, Java, or C++. Use the appropriate compiler or interpreter to run the code.
+
+4) Test the Solution: Where provided, use the sample test cases to verify correctness. Feel free to add additional test cases for deeper understanding.
 
 ## 🎯 Topics Covered
 - Data Structures: Arrays, Trees, Linked Lists, Graphs
