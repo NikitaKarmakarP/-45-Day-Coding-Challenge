@@ -1,0 +1,64 @@
+#include <bits/stdc++.h> 
+
+ 
+
+bool lFord(vector<int> &arr, int n){
+
+    // base case
+
+    if(n == 0)  return true;
+
+ 
+
+    for(int i = 0;i < arr.size()-n-1; i++){     // arr ka size bathate za rahe hai and no  gaht raha hai
+
+        if(arr[i] == 0 && arr[i+n+1] == 0){
+
+            arr[i] = n;
+
+            arr[i+n+1] = n;
+
+ 
+
+            if(lFord(arr, n-1))     // recursion
+
+                return true;
+
+ 
+
+            arr[i] = 0;
+
+            arr[i+n+1] = 0;         // backtrack
+
+        }
+
+    }
+
+ 
+
+    return false;
+
+}
+
+vector<int> findLangford(int n) 
+
+{
+
+    if(n%4 == 1 || n%4 == 2){
+
+        vector<int> ans(1, -1);
+
+        return ans;
+
+    }       
+
+ 
+
+    vector<int> ans(2*n);
+
+    if(lFord(ans, n))
+
+        return ans;
+
+} 
+
