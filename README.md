@@ -4,7 +4,7 @@ Welcome to the 45-Day Coding Challenge repository! This repository is designed t
 ## 📂 Repository Overview
 This repository is structured for easy navigation. Each file/folder corresponds to a unique coding challenge. The problems cover a range of topics from basic algorithms to advanced competitive programming concepts.
 
-## Featured Challenges:
+## 📂 Folder Structure
 
 45-Day-Coding-Challenge/
 
