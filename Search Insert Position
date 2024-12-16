@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+ 
+
+public class Solution {
+
+    public static int searchInsert(int [] arr, int k){
+
+        // Write your code here.
+
+        int l=0,h=arr.length-1;
+
+        while(l<=h){
+
+            int m=(l+h)/2;
+
+            if(arr[m]==k) return m;
+
+            if(arr[m]<k) l=m+1;
+
+            else h=m-1;
+
+        }
+
+        return l;
+
+    }
+
+}
