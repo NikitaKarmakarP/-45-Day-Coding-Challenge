@@ -1,0 +1,34 @@
+def findCiel(arr,x):
+    low = 0
+    high = len(arr) - 1
+    while low<= high:
+        mid = (low+high)//2
+
+        if arr[mid] <= x:
+            low = mid+1
+        else:
+            high = mid - 1
+    return high
+
+
+def findFloor(arr,x):
+    low = 0
+    high = len(arr) - 1
+    while low<=high:
+        mid = (low + high)//2
+        if arr[mid] >= x:
+            high = mid - 1
+        else:
+            low = mid + 1
+
+    return low
+
+
+def searchRange(arr: [int], x: int) -> [int]:
+    # Write your code here.
+    first_occ = findFloor(arr,x)
+    last_occ = findCiel(arr,x)
+    if first_occ -1 == last_occ:
+        return [-1,-1]
+    
+    return [first_occ,last_occ]
