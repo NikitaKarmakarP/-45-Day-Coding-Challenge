@@ -116,6 +116,9 @@ We’d love your contributions! If you’d like to improve the repository:
 - Prepare for coding interviews.
 - Challenge yourself to grow as a developer!
 
+## About the Author
+**Created and maintained by Nikita Karmakar P, this repository reflects a commitment to continuous learning and skill improvement. Feel free to connect or provide feedback via GitHub.**
+
 ## ✨ Connect
 **Built with passion by Nikita Karmakar P. If you have feedback or suggestions, feel free to reach out via GitHub.**
 
